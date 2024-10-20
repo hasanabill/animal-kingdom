@@ -7,7 +7,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="w-full  fixed">
+        <nav className="w-full  ">
             <div className=" mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-[75px]">
                     <div className="flex items-center justify-between w-full">
