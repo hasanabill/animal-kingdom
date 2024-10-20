@@ -24,6 +24,17 @@ async function run() {
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
         const animalCollection = client.db("animal-kingdom").collection("animals");
 
+        app.post('/animals', async (req, res) => {
+            const animal = req.body;
+            const result = await animalCollection.insertOne(animal);
+            res.send(result);
+        });
+
+
+        app.get('/animals', async (req, res) => {
+            const result = await animalCollection.find().toArray();
+            res.send(result);
+        });
 
 
 
