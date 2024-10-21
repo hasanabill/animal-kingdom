@@ -20,8 +20,8 @@ const Navbar = () => {
                         </Link>
                         <div className="hidden md:ml-6 md:flex md:space-x-8">
                             <Link to="/" className="text-black hover:bg-darkBlue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
-                            <Link to="/about" className="text-black hover:bg-darkBlue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</Link>
                             <Link to="/adopt" className="text-black hover:bg-darkBlue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Adopt</Link>
+                            <Link to="/about" className="text-black hover:bg-darkBlue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</Link>
                             <Link to="/contact" className="text-black hover:bg-darkBlue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
                         </div>
                     </div>
@@ -54,8 +54,8 @@ const Navbar = () => {
             <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`} id="mobile-menu">
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <Link to="/" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">Home</Link>
-                    <Link to="/about" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">About</Link>
                     <Link to="/adopt" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">Adopt</Link>
+                    <Link to="/about" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">About</Link>
                     <Link to="/contact" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">Contact</Link>
                 </div>
             </div>
