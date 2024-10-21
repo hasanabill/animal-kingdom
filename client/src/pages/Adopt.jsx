@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddPetModal from '../components/AddPetModal';
+import { Link } from 'react-router-dom';
 
 
 const Adopt = () => {
@@ -11,6 +12,7 @@ const Adopt = () => {
         name: '',
         breed: '',
         age: '',
+        _id: '',
         gender: '',
         image: '',
         description: '',
@@ -45,6 +47,7 @@ const Adopt = () => {
             });
             const response = await axios.get('http://localhost:5000/animals');
             setPets(response.data);
+            console.log(response.data);
         } catch (error) {
             console.error('Error adding pet:', error);
         }
@@ -69,9 +72,9 @@ const Adopt = () => {
                             <h3 className="text-xl font-bold">{pet.name}</h3>
                             <p className="text-gray-600">{pet.breed} - {pet.age}</p>
                             <p className="text-gray-500 mt-2">{pet.description}</p>
-                            <button className="mt-4 bg-darkBlue-600 text-white py-2 px-4 rounded-md hover:bg-darkBlue-800 transition-all">
+                            <Link to={`/pets/${pet._id}`} className="mt-4 bg-darkBlue-600 text-white py-2 px-4 rounded-md hover:bg-darkBlue-800 transition-all">
                                 View Details
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 ))}

@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Adopt from "../pages/Adopt";
+import PetDetails from "../pages/PetDetails";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,11 @@ export const router = createBrowserRouter([
                 path: "/adopt", // Add the new route
                 element: <Adopt />,
             },
+            {
+                path: "/pets/:id",
+                element: <PetDetails />,
+            },
+
         ]
     },
 ]);

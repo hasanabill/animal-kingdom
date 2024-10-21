@@ -35,6 +35,22 @@ async function run() {
             res.send(result);
         });
 
+        app.get('/animals/:id', async (req, res) => {
+            const id = req.params.id;
+            try {
+                const pet = await animalCollection.findOne({ _id: new ObjectId(id) });
+                if (pet) {
+                    res.send(pet);
+                } else {
+                    res.status(404).send({ message: 'Pet not found' });
+                }
+            } catch (error) {
+                console.error('Error fetching pet:', error);
+                res.status(500).send({ message: 'Internal server error' });
+            }
+        });
+
+
     } catch (error) {
         console.log(error);
     }
