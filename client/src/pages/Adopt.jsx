@@ -66,7 +66,7 @@ const Adopt = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
                 {pets.map((pet) => (
-                    <div key={pet.id} className="bg-white shadow-md rounded-lg overflow-hidden">
+                    <div key={pet._id} className="bg-white shadow-md rounded-lg overflow-hidden">
                         <img src={pet.image} alt={pet.name} className="w-full h-64 object-cover" />
                         <div className="p-4">
                             <h3 className="text-xl font-bold">{pet.name}</h3>
