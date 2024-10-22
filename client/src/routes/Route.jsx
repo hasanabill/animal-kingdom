@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
                 element: <About />,
             },
             {
-                path: "/adopt", // Add the new route
+                path: "/adopt",
                 element: <Adopt />,
             },
             {

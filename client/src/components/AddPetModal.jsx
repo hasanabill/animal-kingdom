@@ -24,38 +24,53 @@ const AddPetModal = ({ showModal, setShowModal, newPet, setNewPet, handleFormSub
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block mb-2">Breed</label>
-                        <input
-                            type="text"
-                            name="breed"
-                            value={newPet.breed}
-                            onChange={handleInputChange}
-                            className="w-full px-3 py-2 border rounded-md"
-                            required
-                        />
+                    <div className="flex gap-2">
+                        <div className="mb-4">
+                            <label className="block mb-2">Type</label>
+                            <input
+                                type="text"
+                                name="type"
+                                value={newPet.type}
+                                onChange={handleInputChange}
+                                className="w-full px-3 py-2 border rounded-md"
+                                required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block mb-2">Breed</label>
+                            <input
+                                type="text"
+                                name="breed"
+                                value={newPet.breed}
+                                onChange={handleInputChange}
+                                className="w-full px-3 py-2 border rounded-md"
+                                required
+                            />
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <label className="block mb-2">Age</label>
-                        <input
-                            type="text"
-                            name="age"
-                            value={newPet.age}
-                            onChange={handleInputChange}
-                            className="w-full px-3 py-2 border rounded-md"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block mb-2">Gender</label>
-                        <input
-                            type="text"
-                            name="gender"
-                            value={newPet.gender}
-                            onChange={handleInputChange}
-                            className="w-full px-3 py-2 border rounded-md"
-                            required
-                        />
+                    <div className="flex gap-2">
+                        <div className="mb-4">
+                            <label className="block mb-2">Age</label>
+                            <input
+                                type="text"
+                                name="age"
+                                value={newPet.age}
+                                onChange={handleInputChange}
+                                className="w-full px-3 py-2 border rounded-md"
+                                required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block mb-2">Gender</label>
+                            <input
+                                type="text"
+                                name="gender"
+                                value={newPet.gender}
+                                onChange={handleInputChange}
+                                className="w-full px-3 py-2 border rounded-md"
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="mb-4">
                         <label className="block mb-2">Image URL</label>

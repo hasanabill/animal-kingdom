@@ -9,16 +9,16 @@ const Adopt = () => {
     const [pets, setPets] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [newPet, setNewPet] = useState({
+        _id: '',
         name: '',
+        type: '',
         breed: '',
         age: '',
-        _id: '',
         gender: '',
         image: '',
         description: '',
     });
 
-    // Fetch pets data from API
     useEffect(() => {
         const fetchPets = async () => {
             try {
@@ -31,7 +31,6 @@ const Adopt = () => {
         fetchPets();
     }, []);
 
-    // Handle form submission
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -39,6 +38,7 @@ const Adopt = () => {
             setShowModal(false);
             setNewPet({
                 name: '',
+                type: '',
                 breed: '',
                 age: '',
                 gender: '',
@@ -70,8 +70,9 @@ const Adopt = () => {
                         <img src={pet.image} alt={pet.name} className="w-full h-64 object-cover" />
                         <div className="p-4">
                             <h3 className="text-xl font-bold">{pet.name}</h3>
+                            <h3 className="">{pet.type}</h3>
                             <p className="text-gray-600">{pet.breed} - {pet.age}</p>
-                            <p className="text-gray-500 mt-2">{pet.description}</p>
+                            <p className="text-gray-500 mt-2 mb-3">{pet.description}</p>
                             <Link to={`/pets/${pet._id}`} className="mt-4 bg-darkBlue-600 text-white py-2 px-4 rounded-md hover:bg-darkBlue-800 transition-all">
                                 View Details
                             </Link>
