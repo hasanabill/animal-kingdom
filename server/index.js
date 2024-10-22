@@ -25,9 +25,14 @@ async function run() {
         const animalCollection = client.db("animal-kingdom").collection("animals");
 
         app.post('/animals', async (req, res) => {
-            const animal = req.body;
-            const result = await animalCollection.insertOne(animal);
-            res.send(result);
+            const { _id, ...animal } = req.body;
+            try {
+                const result = await animalCollection.insertOne(animal);
+                res.send(result);
+            } catch (error) {
+                console.error('Error adding animal:', error);
+                res.status(500).send({ message: 'Internal server error' });
+            }
         });
 
         app.get('/animals', async (req, res) => {
