@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Loader from '../components/Loader';
+import EditPetModal from '../components/EditPetModal';
 
 const PetDetails = () => {
     const { id } = useParams();
     const [pet, setPet] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [showEditModal, setShowEditModal] = useState(false);
 
     useEffect(() => {
         const fetchPet = async () => {
@@ -15,15 +18,25 @@ const PetDetails = () => {
                 setPet(response.data);
                 setLoading(false);
             } catch (err) {
-                setError('Error fetching pet details');
+                setError('Error fetching pet details', err);
                 setLoading(false);
             }
         };
         fetchPet();
     }, [id]);
 
+    const handleUpdatePet = async (updatedPet) => {
+        try {
+            await axios.put(`http://localhost:5000/animals/${id}`, updatedPet);
+            setPet(updatedPet);
+            setShowEditModal(false);
+        } catch (err) {
+            console.error('Error updating pet:', err);
+        }
+    };
+
     if (loading) {
-        return <div className="text-center py-16">Loading...</div>;
+        return <Loader />;
     }
 
     if (error) {
@@ -44,8 +57,21 @@ const PetDetails = () => {
                     <p className="text-gray-600 mb-2"><strong>Age:</strong> {pet.age}</p>
                     <p className="text-gray-600 mb-2"><strong>Gender:</strong> {pet.gender}</p>
                     <p className="text-gray-500 mt-4">{pet.description}</p>
+                    <button
+                        className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-800 transition-all"
+                        onClick={() => setShowEditModal(true)}
+                    >
+                        Edit Pet
+                    </button>
                 </div>
             </div>
+            {showEditModal && (
+                <EditPetModal
+                    pet={pet}
+                    onClose={() => setShowEditModal(false)}
+                    onSave={handleUpdatePet}
+                />
+            )}
         </div>
     );
 };

@@ -1,9 +1,7 @@
-// Adopt.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddPetModal from '../components/AddPetModal';
 import { Link } from 'react-router-dom';
-
 
 const Adopt = () => {
     const [pets, setPets] = useState([]);
@@ -53,6 +51,16 @@ const Adopt = () => {
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/animals/${id}`);
+            // Update 
+            setPets((prevPets) => prevPets.filter((pet) => pet._id !== id));
+        } catch (error) {
+            console.error('Error deleting pet:', error);
+        }
+    };
+
     return (
         <div className="py-16 bg-gray-100">
             <h2 className="text-3xl font-bold text-center mb-10">Available Pets for Adoption</h2>
@@ -73,9 +81,20 @@ const Adopt = () => {
                             <h3 className="">{pet.type}</h3>
                             <p className="text-gray-600">{pet.breed} - {pet.age}</p>
                             <p className="text-gray-500 mt-2 mb-3">{pet.description}</p>
-                            <Link to={`/pets/${pet._id}`} className="mt-4 bg-darkBlue-600 text-white py-2 px-4 rounded-md hover:bg-darkBlue-800 transition-all">
-                                View Details
-                            </Link>
+                            <div className="flex justify-between">
+                                <Link
+                                    to={`/pets/${pet._id}`}
+                                    className="bg-darkBlue-600 text-white py-2 px-4 rounded-md hover:bg-darkBlue-800 transition-all"
+                                >
+                                    View Details
+                                </Link>
+                                <button
+                                    onClick={() => handleDelete(pet._id)}
+                                    className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-800 transition-all"
+                                >
+                                    Delete
+                                </button>
+                            </div>
                         </div>
                     </div>
                 ))}

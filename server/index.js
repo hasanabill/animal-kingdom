@@ -55,6 +55,43 @@ async function run() {
             }
         });
 
+        app.delete('/animals/:id', async (req, res) => {
+            const id = req.params.id;
+            try {
+                const result = await animalCollection.deleteOne({ _id: new ObjectId(id) });
+                if (result.deletedCount === 1) {
+                    res.send({ message: 'Animal deleted successfully' });
+                } else {
+                    res.status(404).send({ message: 'Animal not found' });
+                }
+            } catch (error) {
+                console.error('Error deleting animal:', error);
+                res.status(500).send({ message: 'Internal server error' });
+            }
+        });
+
+        app.put('/animals/:id', async (req, res) => {
+            const { id } = req.params;
+            const updatedPet = req.body;
+
+            delete updatedPet._id;
+
+            try {
+                const result = await animalCollection.updateOne(
+                    { _id: new ObjectId(id) },
+                    { $set: updatedPet }
+                );
+
+                if (result.matchedCount === 0) {
+                    return res.status(404).send({ message: 'Animal not found' });
+                }
+
+                res.send({ message: 'Animal updated successfully' });
+            } catch (error) {
+                console.error('Error updating pet:', error);
+                res.status(500).send({ message: 'Internal server error' });
+            }
+        });
 
     } catch (error) {
         console.log(error);

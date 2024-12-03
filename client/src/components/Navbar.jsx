@@ -56,7 +56,7 @@ const Navbar = () => {
                     <Link to="/" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">Home</Link>
                     <Link to="/adopt" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">Adopt</Link>
                     <Link to="/about" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">About</Link>
-                    <Link to="/contact" className="block text-black hover:text-blue-800 px-3 py-2 rounded-md text-base font-medium">Contact</Link>
+
                 </div>
             </div>
         </nav>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import heroImage from '../../assets/hero-1.jpg';
 
 
@@ -10,9 +11,11 @@ const Hero = () => {
                 <p className="text-lg mb-6">
                     Find your perfect companion and give a pet a forever home today.
                 </p>
-                <button className="bg-darkBlue-600 hover:bg-darkBlue-800 text-white py-2 px-6 rounded-md font-semibold transition-all">
-                    Adopt Now
-                </button>
+                <Link to="/adopt" className="inline-block">
+                    <button className="bg-darkBlue-600 hover:bg-darkBlue-800 text-white py-2 px-6 rounded-md font-semibold transition-all">
+                        Adopt Now
+                    </button>
+                </Link>
             </div>
         </div>
     );
